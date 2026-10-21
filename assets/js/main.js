@@ -825,11 +825,68 @@
     }
   }
 
+  // 11. Welcome Intro Overlay (Ensures 100% Instant Audio Playback on First Visit)
+  function initWelcomeAudioOverlay() {
+    // Check if user already interacted in this session
+    if (sessionStorage.getItem('vt_audio_unlocked') === 'true') {
+      return;
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'welcome-audio-overlay';
+    overlay.innerHTML = `
+      <div class="welcome-box">
+        <div class="welcome-mascot-icon">🧸</div>
+        <h2 class="welcome-title">Chào Mừng Bạn Đến Với Portfolio! 🌸</h2>
+        <p class="welcome-sub">Khám phá không gian 3D Mechatronics & quá trình phát triển của <strong>Vương Tấn Tài</strong> cùng âm nhạc du dương.</p>
+        <button class="welcome-btn" id="welcome-start-btn">
+          <span>🎵 Bật Nhạc & Vào Khám Phá ✨</span>
+        </button>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const unlockAndStart = (e) => {
+      e.stopPropagation();
+      sessionStorage.setItem('vt_audio_unlocked', 'true');
+      overlay.classList.add('hidden');
+      setTimeout(() => overlay.remove(), 550);
+
+      if (bgmAudio) {
+        bgmAudio.volume = 0.65;
+        bgmAudio.play().then(() => {
+          const musicBtn = document.getElementById('btn-music-toggle');
+          if (musicBtn) {
+            musicBtn.classList.add('music-playing');
+            musicBtn.setAttribute('title', `Đang phát: ${BGM_TRACKS[currentTrackIndex].name} (Nhấp để đổi bài) 🎵`);
+          }
+        }).catch(err => console.log('Audio start:', err));
+      }
+
+      playCyberTone('success');
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 85,
+          spread: 80,
+          origin: { y: 0.55 },
+          colors: ['#ff5ca8', '#fda4af', '#fbbf24', '#ffffff', '#c084fc']
+        });
+      }
+    };
+
+    const startBtn = overlay.querySelector('#welcome-start-btn');
+    if (startBtn) startBtn.addEventListener('click', unlockAndStart);
+    overlay.addEventListener('click', unlockAndStart);
+  }
+
   function init() {
     initKawaiiMouseTrail();
     initKawaiiMascot();
     initBackgroundMusic();
     initVideoAutoplay();
+    initWelcomeAudioOverlay();
     renderDynamicData();
     setupListeners();
     initSimulationWidget();
