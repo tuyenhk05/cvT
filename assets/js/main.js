@@ -636,22 +636,47 @@
     }
   }
 
-  // 9. Background Music Controller (Sweet BGM Audio - Auto-Play & Louder Volume)
+  // 9. Background Music Controller (Dual-Track Alternating BGM Engine)
   let bgmAudio = null;
+  const BGM_TRACKS = [
+    {
+      id: 0,
+      name: 'Nhạc Nền 1 (Mới - Mặc Định)',
+      shortName: 'Nhạc Nền 1 🌸',
+      src: 'assets/audio/bgm-default.mp3'
+    },
+    {
+      id: 1,
+      name: 'Nhạc Nền 2 (Giai Điệu Thư Giãn)',
+      shortName: 'Nhạc Nền 2 🎵',
+      src: 'assets/audio/bgm-secondary.mp3'
+    }
+  ];
+  let currentTrackIndex = 0;
 
   function initBackgroundMusic() {
+    // Restore chosen track from session (defaults to 0: new mp3)
+    const savedTrack = parseInt(sessionStorage.getItem('vt_bgm_track_idx') || '0', 10);
+    currentTrackIndex = (savedTrack >= 0 && savedTrack < BGM_TRACKS.length) ? savedTrack : 0;
+
     bgmAudio = document.getElementById('bgm-audio');
     if (!bgmAudio) {
-      bgmAudio = new Audio('assets/audio/bgm.mp3');
+      bgmAudio = new Audio(BGM_TRACKS[currentTrackIndex].src);
       bgmAudio.id = 'bgm-audio';
       bgmAudio.loop = true;
       bgmAudio.autoplay = true;
       document.body.appendChild(bgmAudio);
+    } else {
+      // Ensure source matches current track
+      if (!bgmAudio.src.includes(BGM_TRACKS[currentTrackIndex].src)) {
+        bgmAudio.src = BGM_TRACKS[currentTrackIndex].src;
+      }
     }
-    // Set higher, rich volume as requested (0.65)
+
+    // Set louder, rich volume as requested (0.65)
     bgmAudio.volume = 0.65;
 
-    // Restore playback position across subpage navigation
+    // Restore playback position
     const savedTime = parseFloat(sessionStorage.getItem('vt_bgm_time') || '0');
     if (!isNaN(savedTime) && savedTime > 0) {
       bgmAudio.currentTime = savedTime;
@@ -664,10 +689,10 @@
       if (musicBtn) {
         if (playing) {
           musicBtn.classList.add('music-playing');
-          musicBtn.setAttribute('title', 'Tạm dừng nhạc nền 🎵');
+          musicBtn.setAttribute('title', `Đang phát: ${BGM_TRACKS[currentTrackIndex].name} (Nhấp để đổi bài) 🎵`);
         } else {
           musicBtn.classList.remove('music-playing');
-          musicBtn.setAttribute('title', 'Bật phát nhạc nền 🎵');
+          musicBtn.setAttribute('title', `Nhấp để phát nhạc nền: ${BGM_TRACKS[currentTrackIndex].name} 🎵`);
         }
       }
     }
@@ -680,7 +705,7 @@
         promise.then(() => {
           updateBgmUI(true);
         }).catch(err => {
-          console.log('BGM autoplay waiting for pointer move:', err);
+          console.log('BGM autoplay waiting for interaction:', err);
         });
       }
     }
@@ -691,6 +716,24 @@
       updateBgmUI(false);
     }
 
+    function switchTrack(newIndex) {
+      currentTrackIndex = newIndex;
+      sessionStorage.setItem('vt_bgm_track_idx', currentTrackIndex.toString());
+      sessionStorage.setItem('vt_bgm_time', '0');
+      
+      const track = BGM_TRACKS[currentTrackIndex];
+      bgmAudio.src = track.src;
+      bgmAudio.currentTime = 0;
+      bgmAudio.volume = 0.65;
+      
+      bgmAudio.play().then(() => {
+        updateBgmUI(true);
+        showToast(`Đã đổi sang: ${track.shortName}`);
+      }).catch(err => {
+        console.log('Track switch playback notice:', err);
+      });
+    }
+
     // Save playback position periodically
     setInterval(() => {
       if (bgmAudio && !bgmAudio.paused) {
@@ -698,11 +741,10 @@
       }
     }, 1500);
 
-    // Auto-Play aggressively:
-    // 1. Try playing immediately on script execution
+    // Auto-Play aggressively on load:
     playBgm();
 
-    // 2. Also register fast pointer/move unlocker for browsers with strict policy
+    // Fast pointer unlocker for browsers with strict policy
     const unlockEvents = ['pointermove', 'mousemove', 'pointerdown', 'mousedown', 'touchstart', 'scroll', 'keydown', 'click'];
     const fastUnlocker = () => {
       if (bgmAudio && bgmAudio.paused) {
@@ -712,14 +754,23 @@
     };
     unlockEvents.forEach(evt => window.addEventListener(evt, fastUnlocker, { once: true, capture: true }));
 
-    // Music Toggle Button Listener
+    // Music Header Item Click: Alternate between tracks luân phiên
     if (musicBtn) {
       musicBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         playCyberTone('bloop');
+
+        // Toggle to the other track
+        const nextTrackIndex = (currentTrackIndex + 1) % BGM_TRACKS.length;
+        switchTrack(nextTrackIndex);
+      });
+
+      // Right-click or double-click to Pause/Resume if desired
+      musicBtn.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
         if (bgmAudio.paused) {
           playBgm();
-          showToast('Đang phát nhạc nền 🎵');
+          showToast(`Tiếp tục phát: ${BGM_TRACKS[currentTrackIndex].shortName}`);
         } else {
           pauseBgm();
           showToast('Đã tạm dừng nhạc nền 🔇');
