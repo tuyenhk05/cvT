@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vương Tấn Tài | Kỹ sư Cơ Điện Tử - PE & Tự Động Hóa | Đại Học Lạc Hồng</title>
+  
+  <meta name="description" content="e-Portfolio Vương Tấn Tài - Sinh viên năm 4 Cơ Điện Tử ĐH Lạc Hồng (GPA 8.35/10), Giải Ba Cuộc thi Thiết kế Máy MISUMI 2026, SolidWorks CSWA, Thực tập PE tại ITO VN.">
+  <meta name="keywords" content="Vương Tấn Tài, Mechatronics, Kỹ sư PE, Tự động hóa, SolidWorks CSWA, PLC Siemens, MISUMI, Đại học Lạc Hồng, ITO VN">
+  <meta name="author" content="Vương Tấn Tài">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vương Tấn Tài | Kỹ sư Cơ Điện Tử - PE & Tự Động Hóa">
+  <meta property="og:description" content="Khám phá hành trình phát triển, giải thưởng MISUMI 2026, dự án thực tế và xem CV trực tuyến của Vương Tấn Tài.">
+  <meta property="og:image" content="assets/images/awards/misumi-ceremony.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/svg/lhu-logo.svg">
+</head>
+<body>
+
+  <!-- Three.js 3D Background Scene -->
+  <div id="three-canvas-container"></div>
+  <div class="bg-grid-overlay"></div>
+  <div class="noise-overlay"></div>
+
+  <div class="app-wrapper">
+
+    <!-- Header Navigation Bar (Clean & Balanced across 4 pages) -->
+    <header class="hud-nav">
+      <div class="container hud-nav-inner">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <i data-lucide="cpu" style="width:22px;height:22px;"></i>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">VƯƠNG TẤN TÀI</span>
+            <span class="brand-badge">MECHATRONICS &bull; ĐH LẠC HỒNG</span>
+          </div>
+        </a>
+
+        <!-- Main 4-Page Navigation -->
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link active"><i data-lucide="home" style="width:16px;height:16px;"></i> Trang Chủ</a></li>
+            <li><a href="hanh-trinh.html" class="nav-link"><i data-lucide="compass" style="width:16px;height:16px;"></i> Hành Trình & Đời Sống</a></li>
+            <li><a href="du-an-giai-thuong.html" class="nav-link"><i data-lucide="trophy" style="width:16px;height:16px;"></i> Dự Án & Giải Thưởng</a></li>
+            <li><a href="cv.html" class="nav-link"><i data-lucide="file-text" style="width:16px;height:16px;"></i> Xem CV Trực Tuyến</a></li>
+          </ul>
+        </nav>
+
+        <!-- Quick Actions -->
+        <div class="nav-actions">
+          <button id="btn-theme-toggle" class="btn-icon" title="Chế độ màu Sáng/Tối">
+            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+          </button>
+
+          <button id="btn-music-toggle" class="btn-icon" title="Bật/Tắt nhạc nền (BGM)">
+            <i data-lucide="music" style="width:16px;height:16px;"></i>
+          </button>
+
+          <button id="btn-sound-toggle" class="btn-icon" title="Bật/Tắt hiệu ứng âm thanh">
+            <i data-lucide="volume-2" style="width:16px;height:16px;"></i>
+          </button>
+
+          <a href="#contact" class="btn-primary" style="padding:0.45rem 1.1rem;font-size:0.85rem;">
+            <i data-lucide="mail" style="width:15px;height:15px;"></i>
+            <span>Liên Hệ</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="pulse-dot"></span>
+            <span>Sẵn Sàng Gia Nhập & Cống Hiến &bull; PE / Tự Động Hóa</span>
+          </div>
+
+          <h1 class="hero-name">
+            <span class="hero-name-decrypt text-gradient" data-text="VƯƠNG TẤN TÀI">VƯƠNG TẤN TÀI</span>
+          </h1>
+
+          <div class="hero-role">
+            <i data-lucide="cog" class="spin-icon" style="width:22px;height:22px;color:var(--accent-emerald);"></i>
+            <span>Kỹ sư Kỹ thuật Sản xuất (PE) & Tự Động Hóa</span>
+            <span class="hero-role-badge font-mono">MECHATRONICS</span>
+          </div>
+
+          <p class="hero-bio">
+            Sinh viên năm 4 ngành Công nghệ Kỹ thuật Cơ điện tử tại <strong>Trường Đại học Lạc Hồng</strong> với nền tảng vững chắc về thiết kế SolidWorks 3D, lập trình vi điều khiển STM32, PLC công nghiệp và am hiểu sâu sắc tiêu chuẩn quản lý sản xuất 3S-5S Nhật Bản. Mục tiêu phát triển thành Kỹ sư Kỹ thuật Sản xuất (PE) xuất sắc nhằm tối ưu hóa chu kỳ và cải tiến chất lượng dây chuyền doanh nghiệp.
+          </p>
+
+          <div class="hero-meta-row">
+            <div class="hero-meta-item">
+              <i data-lucide="graduation-cap" style="width:18px;height:18px;color:var(--accent-cyan);"></i>
+              <span><strong>ĐH Lạc Hồng:</strong> GPA 8.35/10 (3.34/4.0 - Giỏi)</span>
+            </div>
+            <div class="hero-meta-item">
+              <i data-lucide="award" style="width:18px;height:18px;color:var(--accent-gold);"></i>
+              <span><strong>Giải Ba MISUMI 2026:</strong> Pick & Place</span>
+            </div>
+            <div class="hero-meta-item">
+              <i data-lucide="check-circle" style="width:18px;height:18px;color:var(--accent-emerald);"></i>
+              <span><strong>SolidWorks:</strong> CSWA Certified</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="hanh-trinh.html" class="btn-primary">
+              <i data-lucide="compass" style="width:18px;height:18px;"></i>
+              <span>Xem Quá Trình Phát Triển</span>
+            </a>
+            <a href="du-an-giai-thuong.html" class="btn-secondary">
+              <i data-lucide="trophy" style="width:18px;height:18px;"></i>
+              <span>Xem Dự Án & Bằng Khen</span>
+            </a>
+            <a href="cv.html" class="btn-secondary">
+              <i data-lucide="file-text" style="width:18px;height:18px;"></i>
+              <span>Xem CV Trực Tuyến</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Visual Profile Card -->
+        <div class="hero-visual-card">
+          <div class="avatar-wrapper">
+            <div class="avatar-ring-outer"></div>
+            <div class="avatar-ring-glow"></div>
+            <div class="avatar-img-container">
+              <img src="assets/images/avatar.png" alt="Vương Tấn Tài" class="avatar-img">
+            </div>
+
+            <!-- Floating Badge 1: MISUMI Award -->
+            <div class="floating-badge badge-1">
+              <img src="assets/images/svg/misumi-logo.svg" alt="MISUMI">
+              <div>
+                <div class="badge-title text-gold">GIẢI BA CHUNG KẾT</div>
+                <div class="badge-sub">MISUMI 2026 &bull; Toàn Quốc</div>
+              </div>
+            </div>
+
+            <!-- Floating Badge 2: CSWA Certified -->
+            <div class="floating-badge badge-2">
+              <img src="assets/images/svg/cswa-badge.svg" alt="CSWA">
+              <div>
+                <div class="badge-title">SOLIDWORKS CSWA</div>
+                <div class="badge-sub">Mechanical Design Certified</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Quote Box -->
+          <div style="max-width:380px;text-align:center;padding:1rem 1.4rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);backdrop-filter:blur(8px);">
+            <p style="font-size:0.85rem;color:var(--text-secondary);font-style:italic;">
+              "Kỷ luật kỹ thuật - Làm chủ sự giao thoa Cơ khí chính xác, Điện tử điều khiển & Chuẩn 5S Nhật Bản."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Key Metrics Row -->
+    <section class="metrics-section">
+      <div class="container">
+        <div class="metrics-grid">
+          <div class="metric-card spotlight-card">
+            <div class="metric-value font-mono"><span class="text-gradient">8.35</span>/10</div>
+            <div class="metric-label">Điểm Trung Bình (GPA)</div>
+            <div class="metric-sub">Thang 4: 3.34 - Xếp loại Giỏi</div>
+          </div>
+          <div class="metric-card spotlight-card">
+            <div class="metric-value font-mono text-gold">MISUMI <span style="font-size:1.6rem;">2026</span></div>
+            <div class="metric-label">Giải Ba Chung Kết Toàn Quốc</div>
+            <div class="metric-sub">Thiết Kế Máy Tự Động Hóa</div>
+          </div>
+          <div class="metric-card spotlight-card">
+            <div class="metric-value font-mono text-emerald">02 <span style="font-size:1.4rem;">LẦN</span></div>
+            <div class="metric-label">Giấy Khen Học Tập Loại Giỏi</div>
+            <div class="metric-sub">Hiệu Trưởng ĐH Lạc Hồng Khen Tặng</div>
+          </div>
+          <div class="metric-card spotlight-card">
+            <div class="metric-value font-mono text-cyan">CSWA</div>
+            <div class="metric-label">Chứng Chỉ Quốc Tế SolidWorks</div>
+            <div class="metric-sub">Dassault Systèmes Cấp</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Navigation Hub: Lối Tắt Đến 3 Trang Chuyên Biệt -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i data-lucide="layers"></i>
+            <span>Không Gian Khám Phá</span>
+          </div>
+          <h2 class="section-title">Khám Phá Các Chuyên Mục Năng Lực</h2>
+          <p class="section-subtitle">
+            Hồ sơ năng lực được cấu trúc thành các trang chuyên biệt, giúp quý nhà tuyển dụng và bạn bè có cái nhìn toàn diện từ kỹ thuật thực chiến đến đời sống rèn luyện.
+          </p>
+        </div>
+
+        <div class="page-hub-grid">
+          <!-- Hub Card 1: Hành trình & Đời sống -->
+          <a href="hanh-trinh.html" class="page-hub-card spotlight-card">
+            <div class="page-hub-icon">
+              <i data-lucide="compass" style="width:26px;height:26px;"></i>
+            </div>
+            <h3 class="page-hub-title">Hành Trình & Đời Sống</h3>
+            <p class="page-hub-desc">
+              Khám phá quá trình nghiên cứu & lắp đặt máy thực tế với mạch STM32, 2 Giấy khen sinh viên Giỏi ĐH Lạc Hồng, và các chiến tích thể thao điện tử (MVP 16.0 Liên Quân Mobile kèm video clip).
+            </p>
+            <div class="page-hub-arrow">
+              <span>Xem Chi Tiết Hành Trình</span>
+              <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+            </div>
+          </a>
+
+          <!-- Hub Card 2: Dự án & Giải thưởng -->
+          <a href="du-an-giai-thuong.html" class="page-hub-card spotlight-card">
+            <div class="page-hub-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25);color:var(--accent-gold);">
+              <i data-lucide="trophy" style="width:26px;height:26px;"></i>
+            </div>
+            <h3 class="page-hub-title">Dự Án & Giải Thưởng</h3>
+            <p class="page-hub-desc">
+              Chiêm ngưỡng ảnh sân khấu trao giải & bằng chứng nhận Giải Ba Cuộc thi MISUMI 2026, các dự án kỹ thuật chuẩn STAR và trải nghiệm mô phỏng máy Pick & Place tương tác.
+            </p>
+            <div class="page-hub-arrow" style="color:var(--accent-gold);">
+              <span>Khám Phá Dự Án & Giải Thưởng</span>
+              <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+            </div>
+          </a>
+
+          <!-- Hub Card 3: Xem CV Trực Tuyến -->
+          <a href="cv.html" class="page-hub-card spotlight-card">
+            <div class="page-hub-icon" style="background:rgba(0,217,245,0.1);border-color:rgba(0,217,245,0.25);color:var(--accent-cyan);">
+              <i data-lucide="file-text" style="width:26px;height:26px;"></i>
+            </div>
+            <h3 class="page-hub-title">Xem CV Trực Tuyến</h3>
+            <p class="page-hub-desc">
+              Xem trực tiếp toàn bộ trang CV được thiết kế số hóa trực quan, kèm khung nhúng file PDF gốc tương tác ngay trên trình duyệt mà không cần tải về máy.
+            </p>
+            <div class="page-hub-arrow" style="color:var(--accent-cyan);">
+              <span>Mở CV Trực Tuyến</span>
+              <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Contact Section -->
+    <section id="contact" class="section" style="background:rgba(39,15,34,0.45);">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i data-lucide="send"></i>
+            <span>Kết Nối Cơ Hội</span>
+          </div>
+          <h2 class="section-title">Thông Tin Liên Hệ & Phỏng Vấn</h2>
+          <p class="section-subtitle">
+            Rất mong có cơ hội được trao đổi trực tiếp cùng quý nhà tuyển dụng và doanh nghiệp về vị trí Kỹ sư PE / Kỹ sư Tự động hóa.
+          </p>
+        </div>
+
+        <div style="max-width:850px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+          <div class="spotlight-card" style="padding:2rem;">
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:1.5rem;color:var(--text-primary);">Kênh Liên Lạc Trực Tiếp</h3>
+            
+            <div style="display:flex;flex-direction:column;gap:1.2rem;">
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div style="width:42px;height:42px;border-radius:var(--radius-md);background:rgba(0,245,160,0.1);display:flex;align-items:center;justify-content:center;color:var(--accent-emerald);">
+                  <i data-lucide="phone" style="width:20px;height:20px;"></i>
+                </div>
+                <div>
+                  <div style="font-size:0.75rem;font-family:var(--font-mono);color:var(--text-muted);">SỐ ĐIỆN THOẠI / ZALO</div>
+                  <strong class="font-mono" style="font-size:1.05rem;color:var(--text-primary);">0919 784 542</strong>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div style="width:42px;height:42px;border-radius:var(--radius-md);background:rgba(0,217,245,0.1);display:flex;align-items:center;justify-content:center;color:var(--accent-cyan);">
+                  <i data-lucide="mail" style="width:20px;height:20px;"></i>
+                </div>
+                <div>
+                  <div style="font-size:0.75rem;font-family:var(--font-mono);color:var(--text-muted);">EMAIL KỸ THUẬT</div>
+                  <strong class="font-mono" style="font-size:0.95rem;color:var(--text-primary);">vttai12052005@gmail.com</strong>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div style="width:42px;height:42px;border-radius:var(--radius-md);background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;color:var(--accent-gold);">
+                  <i data-lucide="map-pin" style="width:20px;height:20px;"></i>
+                </div>
+                <div>
+                  <div style="font-size:0.75rem;font-family:var(--font-mono);color:var(--text-muted);">ĐỊA CHỈ</div>
+                  <div style="font-size:0.9rem;color:var(--text-secondary);">Hẻm 475 Huỳnh Văn Nghệ, P. Trấn Biên, Đồng Nai</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="spotlight-card" style="padding:2rem;">
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:1.5rem;color:var(--text-primary);">Gửi Tin Nhắn Nhanh</h3>
+            <form id="contact-form" style="display:flex;flex-direction:column;gap:1rem;">
+              <input type="text" required placeholder="Họ tên người liên hệ / Tên công ty" style="width:100%;padding:0.75rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border-color);border-radius:var(--radius-md);color:#fff;outline:none;">
+              <input type="text" required placeholder="Email hoặc Số điện thoại" style="width:100%;padding:0.75rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border-color);border-radius:var(--radius-md);color:#fff;outline:none;">
+              <textarea rows="3" required placeholder="Lời nhắn hoặc thông tin vị trí tuyển dụng..." style="width:100%;padding:0.75rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border-color);border-radius:var(--radius-md);color:#fff;outline:none;resize:vertical;"></textarea>
+              <button type="submit" class="btn-primary" style="justify-content:center;">
+                <i data-lucide="send" style="width:16px;height:16px;"></i>
+                <span>Gửi Tin Nhắn Tuyển Dụng</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container" style="text-align:center;">
+        <ul class="footer-nav">
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="hanh-trinh.html">Hành Trình & Đời Sống</a></li>
+          <li><a href="du-an-giai-thuong.html">Dự Án & Giải Thưởng</a></li>
+          <li><a href="cv.html">Xem CV Trực Tuyến</a></li>
+        </ul>
+        <div class="font-mono" style="font-size:0.75rem;color:var(--text-muted);">
+          &copy; 2026 Vương Tấn Tài &bull; Khoa Cơ Điện - Điện Tử, Trường Đại học Lạc Hồng (LHU). All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Global Lightbox Modal -->
+  <div id="portfolio-modal" class="modal-overlay">
+    <div class="modal-content-box">
+      <button class="modal-close-btn" onclick="closeModal()" title="Đóng cửa sổ">
+        <i data-lucide="x" style="width:20px;height:20px;"></i>
+      </button>
+      <div id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div id="toast-msg" class="toast-msg">
+    <i data-lucide="check-circle" style="color:var(--accent-emerald);width:20px;height:20px;"></i>
+    <span id="toast-text">Đã sao chép!</span>
+  </div>
+
+  <!-- Vendor Scripts -->
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/canvas-confetti.min.js"></script>
+  <script src="assets/vendor/lucide.min.js"></script>
+
+  <!-- App Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/three-scene.js"></script>
+  <script src="assets/js/gsap-animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

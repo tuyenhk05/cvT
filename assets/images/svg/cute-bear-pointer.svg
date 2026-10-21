@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+  <!-- Cute Teddy Paw Pointer Cursor -->
+  <defs>
+    <filter id="shadowPaw" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-color="#f43f5e" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadowPaw)">
+    <!-- Main Paw Pad -->
+    <ellipse cx="19" cy="23" rx="11" ry="9.5" fill="#fdf2f8" stroke="#f43f5e" stroke-width="1.8"/>
+    <!-- Big Heart Inner Pad -->
+    <path d="M19 19 C17 16 13 17 13 21 C13 24 19 28 19 28 C19 28 25 24 25 21 C25 17 21 16 19 19 Z" fill="#fb7185"/>
+    <!-- 4 Little Toe Beans -->
+    <ellipse cx="9" cy="13" rx="3.5" ry="4.5" fill="#fbcfe8" stroke="#f43f5e" stroke-width="1.5"/>
+    <ellipse cx="9" cy="13" rx="2" ry="2.8" fill="#fda4af"/>
+
+    <ellipse cx="15.5" cy="8.5" rx="3.5" ry="4.5" fill="#fbcfe8" stroke="#f43f5e" stroke-width="1.5"/>
+    <ellipse cx="15.5" cy="8.5" rx="2" ry="2.8" fill="#fda4af"/>
+
+    <ellipse cx="22.5" cy="8.5" rx="3.5" ry="4.5" fill="#fbcfe8" stroke="#f43f5e" stroke-width="1.5"/>
+    <ellipse cx="22.5" cy="8.5" rx="2" ry="2.8" fill="#fda4af"/>
+
+    <ellipse cx="29" cy="13" rx="3.5" ry="4.5" fill="#fbcfe8" stroke="#f43f5e" stroke-width="1.5"/>
+    <ellipse cx="29" cy="13" rx="2" ry="2.8" fill="#fda4af"/>
+    <!-- Little Sparkle -->
+    <text x="24" y="34" font-size="12">✨</text>
+  </g>
+</svg>

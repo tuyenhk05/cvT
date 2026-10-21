@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dự Án Kỹ Thuật & Giải Thưởng MISUMI | Vương Tấn Tài - Mechatronics</title>
+  
+  <meta name="description" content="Chiêm ngưỡng Giải Ba Cuộc thi MISUMI 2026, các dự án kỹ thuật Pick & Place, Bãi đỗ xe tự động PLC Siemens và kỳ thực tập PE tại ITO VN của Vương Tấn Tài.">
+  <meta property="og:image" content="assets/images/awards/misumi-ceremony.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/svg/lhu-logo.svg">
+</head>
+<body>
+
+  <!-- Three.js 3D Background Scene -->
+  <div id="three-canvas-container"></div>
+  <div class="bg-grid-overlay"></div>
+  <div class="noise-overlay"></div>
+
+  <div class="app-wrapper">
+
+    <!-- Header Navigation Bar -->
+    <header class="hud-nav">
+      <div class="container hud-nav-inner">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">
+            <i data-lucide="cpu" style="width:22px;height:22px;"></i>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">VƯƠNG TẤN TÀI</span>
+            <span class="brand-badge">MECHATRONICS &bull; ĐH LẠC HỒNG</span>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link"><i data-lucide="home" style="width:16px;height:16px;"></i> Trang Chủ</a></li>
+            <li><a href="hanh-trinh.html" class="nav-link"><i data-lucide="compass" style="width:16px;height:16px;"></i> Hành Trình & Đời Sống</a></li>
+            <li><a href="du-an-giai-thuong.html" class="nav-link active"><i data-lucide="trophy" style="width:16px;height:16px;"></i> Dự Án & Giải Thưởng</a></li>
+            <li><a href="cv.html" class="nav-link"><i data-lucide="file-text" style="width:16px;height:16px;"></i> Xem CV Trực Tuyến</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <button id="btn-theme-toggle" class="btn-icon" title="Chế độ màu">
+            <i data-lucide="sun" style="width:16px;height:16px;"></i>
+          </button>
+          <button id="btn-music-toggle" class="btn-icon" title="Bật/Tắt nhạc nền (BGM)">
+            <i data-lucide="music" style="width:16px;height:16px;"></i>
+          </button>
+          <button id="btn-sound-toggle" class="btn-icon" title="Âm thanh hiệu ứng">
+            <i data-lucide="volume-2" style="width:16px;height:16px;"></i>
+          </button>
+          <a href="index.html#contact" class="btn-primary" style="padding:0.45rem 1.1rem;font-size:0.85rem;">
+            <i data-lucide="mail" style="width:15px;height:15px;"></i>
+            <span>Liên Hệ</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section class="section" style="padding-top:calc(var(--header-height) + 3rem);padding-bottom:3rem;">
+      <div class="container text-center" style="max-width:850px;margin:0 auto;text-align:center;">
+        <div class="section-tag" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25);color:var(--accent-gold);">
+          <i data-lucide="trophy"></i>
+          <span>Thành Tích & Năng Lực Kỹ Thuật</span>
+        </div>
+        <h1 class="section-title">
+          Dự Án Kỹ Thuật & Giải Thưởng Tiêu Biểu
+        </h1>
+        <p class="section-subtitle">
+          Tâm điểm Giải Ba Chung kết Cuộc thi Thiết kế Máy MISUMI 2026, cùng các công trình đồ án chế tạo máy theo mô hình kỹ sư chuẩn quốc tế STAR.
+        </p>
+      </div>
+    </section>
+
+    <!-- 1. Tâm Điểm: Cuộc Thi Thiết Kế Máy Tự Động Hóa MISUMI 2026 -->
+    <section class="section" style="padding-top:1rem;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i data-lucide="award"></i>
+            <span>Tự Hào LHU</span>
+          </div>
+          <h2 class="section-title">Giải Ba Chung Kết Cuộc Thi Thiết Kế Máy MISUMI 2026</h2>
+          <p class="section-subtitle">
+            Chủ đề: <strong>Thiết Kế Hệ Thống Pick & Place Tự Động</strong> &bull; Đội LH-LTA (Đại học Lạc Hồng) xuất sắc vượt qua các đội thi kỹ thuật hàng đầu cả nước.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Ảnh Sân Khấu Nhận Giải MISUMI -->
+          <div class="gallery-card spotlight-card">
+            <div class="gallery-media" onclick="openImageModal('assets/images/awards/misumi-ceremony.jpg', 'Lễ trao giải Cuộc thi Thiết kế Máy Tự Động Hóa MISUMI 2026 tại TP.HCM (11/03/2026)')">
+              <img src="assets/images/awards/misumi-ceremony.jpg" alt="Lễ trao giải MISUMI 2026" loading="lazy">
+              <div class="gallery-zoom-badge">
+                <i data-lucide="zoom-in" style="width:14px;height:14px;"></i>
+                <span>Xem ảnh sân khấu</span>
+              </div>
+            </div>
+            <div class="gallery-content">
+              <span class="gallery-tag text-gold">LỄ TRAO GIẢI TOÀN QUỐC &bull; 11/03/2026</span>
+              <h3 class="gallery-title">Đội Tuyển LH-LTA Bước Lên Bục Vinh Quang Nhận Giải Ba</h3>
+              <p class="gallery-desc">
+                Khoảnh khắc các thành viên đội LH-LTA (Đại học Lạc Hồng) nhận giải thưởng chính thức tại TP. Hồ Chí Minh từ Ban Lãnh đạo Tập đoàn MISUMI, Trường ĐH Sư Phạm Kỹ Thuật TP.HCM (HCM-UTE), cùng các doanh nghiệp đồng hành lớn như ITO VN.
+              </p>
+              <button class="btn-sm-details" onclick="openCertModal('misumi')" style="width:fit-content;margin-top:auto;">
+                <i data-lucide="sparkles" style="width:15px;height:15px;"></i>
+                <span>Kích hoạt hiệu ứng vinh danh</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Bằng Khen Đóng Dấu Đỏ MISUMI -->
+          <div class="gallery-card spotlight-card">
+            <div class="gallery-media" onclick="openImageModal('assets/images/awards/misumi-certificate.jpg', 'Giấy chứng nhận Giải Ba Cuộc thi MISUMI 2026 đóng dấu đỏ Tổng Giám đốc Tomohiro Watanabe')">
+              <img src="assets/images/awards/misumi-certificate.jpg" alt="Giấy chứng nhận Giải Ba MISUMI 2026" loading="lazy">
+              <div class="gallery-zoom-badge">
+                <i data-lucide="zoom-in" style="width:14px;height:14px;"></i>
+                <span>Xem bằng khen đóng dấu</span>
+              </div>
+            </div>
+            <div class="gallery-content">
+              <span class="gallery-tag text-gold">GIẤY CHỨNG NHẬN CHÍNH THỨC</span>
+              <h3 class="gallery-title">Văn Bằng Chứng Nhận Từ Công Ty TNHH MISUMI Việt Nam</h3>
+              <p class="gallery-desc">
+                Bằng khen trang trọng ghi nhận thành tích của các thành viên đội LH-LTA: Lê Tuấn Anh, Đỗ Thanh Tùng, Hoàng Quốc Thịnh, <strong>Vương Tấn Tài</strong>, Vương Huy Trường Lâm; có chữ ký và con dấu pháp lý của Tổng Giám đốc Tomohiro Watanabe.
+              </p>
+              <div style="font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-cyan);margin-top:auto;">
+                📜 Chứng nhận gốc được đóng khung lưu niệm
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Danh Mục Dự Án Kỹ Thuật Chuẩn STAR -->
+    <section class="section" style="background:rgba(39,15,34,0.45);">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i data-lucide="layers"></i>
+            <span>Engineering Showcase</span>
+          </div>
+          <h2 class="section-title">Hồ Sơ Dự Án Theo Mô Hình Kỹ Sư STAR</h2>
+          <p class="section-subtitle">
+            Phân tích chi tiết: <strong>Bối cảnh (Situation)</strong>, <strong>Nhiệm vụ (Task)</strong>, <strong>Hành động kỹ thuật (Action)</strong> và <strong>Kết quả đạt được (Result)</strong>.
+          </p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">Tất Cả Dự Án</button>
+          <button class="filter-btn" data-filter="Cuộc thi">Cuộc Thi Sáng Tạo</button>
+          <button class="filter-btn" data-filter="Đại học">Đồ Án Đại Học</button>
+          <button class="filter-btn" data-filter="Doanh nghiệp">Kinh Nghiệm Doanh Nghiệp (ITO VN)</button>
+        </div>
+
+        <div id="projects-grid" class="projects-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Widget Mô Phỏng Trực Tiếp (Simulation Engine) -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag" style="background:rgba(0,245,160,0.1);border-color:rgba(0,245,160,0.25);color:var(--accent-emerald);">
+            <i data-lucide="play-circle"></i>
+            <span>Trải Nghiệm Trực Quan</span>
+          </div>
+          <h2 class="section-title">Mô Phỏng Trực Tiếp: Chu Kỳ Máy Pick & Place</h2>
+          <p class="section-subtitle">
+            Hệ thống điều khiển cơ cấu gantry 3 trục và đóng khay tự động theo thời gian thực. Hãy thử bấm các nút điều khiển bên dưới để tương tác!
+          </p>
+        </div>
+
+        <div class="sim-container">
+          <div class="sim-header">
+            <div class="sim-title-group">
+              <span id="sim-led" class="sim-status-led"></span>
+              <div>
+                <strong id="sim-state-text" class="font-mono" style="font-size:0.9rem;color:var(--text-primary);">READY (STANDBY)</strong>
+                <span style="font-size:0.75rem;color:var(--text-muted);display:block;">Gantry Actuator X-Y-Z &bull; MISUMI Linear Rail Simulation</span>
+              </div>
+            </div>
+
+            <div class="sim-telemetry">
+              <div>SẢN PHẨM: <span id="sim-count" class="sim-telemetry-val">0</span> PCS</div>
+              <div>THỜI GIAN CHU KỲ: <span class="sim-telemetry-val">1.45s</span></div>
+              <div>DUNG SAI: <span class="sim-telemetry-val">&plusmn;0.02mm</span></div>
+            </div>
+          </div>
+
+          <div class="sim-canvas-viewport">
+            <canvas id="sim-canvas" width="900" height="320" style="width:100%;height:100%;"></canvas>
+          </div>
+
+          <div class="sim-controls">
+            <button id="sim-btn-start" class="sim-btn">
+              <i data-lucide="play" style="width:15px;height:15px;"></i>
+              CYCLE START
+            </button>
+            <button id="sim-btn-sensor" class="sim-btn" style="border-color:#38bdf8;color:#38bdf8;background:rgba(56,189,248,0.12);">
+              <i data-lucide="scan" style="width:15px;height:15px;"></i>
+              KÍCH HOẠT CẢM BIẾN QUANG
+            </button>
+            <button id="sim-btn-index" class="sim-btn" style="border-color:#f59e0b;color:#f59e0b;background:rgba(245,158,11,0.12);">
+              <i data-lucide="step-forward" style="width:15px;height:15px;"></i>
+              BƯỚC KHAY TIẾP THEO
+            </button>
+            <button id="sim-btn-stop" class="sim-btn danger">
+              <i data-lucide="octagon-alert" style="width:15px;height:15px;"></i>
+              E-STOP (DỪNG KHẨN CẤP)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container" style="text-align:center;">
+        <ul class="footer-nav">
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="hanh-trinh.html">Hành Trình & Đời Sống</a></li>
+          <li><a href="du-an-giai-thuong.html">Dự Án & Giải Thưởng</a></li>
+          <li><a href="cv.html">Xem CV Trực Tuyến</a></li>
+        </ul>
+        <div class="font-mono" style="font-size:0.75rem;color:var(--text-muted);">
+          &copy; 2026 Vương Tấn Tài &bull; Khoa Cơ Điện - Điện Tử, Trường Đại học Lạc Hồng (LHU). All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Global Lightbox Modal -->
+  <div id="portfolio-modal" class="modal-overlay">
+    <div class="modal-content-box">
+      <button class="modal-close-btn" onclick="closeModal()" title="Đóng cửa sổ">
+        <i data-lucide="x" style="width:20px;height:20px;"></i>
+      </button>
+      <div id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert -->
+  <div id="toast-msg" class="toast-msg">
+    <i data-lucide="check-circle" style="color:var(--accent-emerald);width:20px;height:20px;"></i>
+    <span id="toast-text">Đã sao chép!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/canvas-confetti.min.js"></script>
+  <script src="assets/vendor/lucide.min.js"></script>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/three-scene.js"></script>
+  <script src="assets/js/gsap-animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

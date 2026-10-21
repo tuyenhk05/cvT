@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="260" height="80" rx="12" fill="#ffffff" filter="url(#shadow)"/>
+  <!-- MISUMI Cube icon -->
+  <g transform="translate(24, 18)">
+    <polygon points="22,0 44,11 22,22 0,11" fill="#005bac"/>
+    <polygon points="0,13 22,24 22,44 0,33" fill="#2880c9"/>
+    <polygon points="24,24 44,13 44,33 24,44" fill="#003d73"/>
+  </g>
+  <text x="82" y="50" font-family="'Helvetica Neue', Arial, sans-serif" font-size="32" font-weight="900" fill="#005bac" letter-spacing="1">MISUMI</text>
+  <text x="210" y="50" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="800" fill="#e11d48">VN</text>
+</svg>
