@@ -636,7 +636,7 @@
     }
   }
 
-  // 9. Background Music Controller (Sweet BGM Audio)
+  // 9. Background Music Controller (Sweet BGM Audio - Auto-Play & Louder Volume)
   let bgmAudio = null;
 
   function initBackgroundMusic() {
@@ -645,9 +645,11 @@
       bgmAudio = new Audio('assets/audio/bgm.mp3');
       bgmAudio.id = 'bgm-audio';
       bgmAudio.loop = true;
+      bgmAudio.autoplay = true;
       document.body.appendChild(bgmAudio);
     }
-    bgmAudio.volume = 0.35; // pleasant sweet ambient level
+    // Set higher, rich volume as requested (0.65)
+    bgmAudio.volume = 0.65;
 
     // Restore playback position across subpage navigation
     const savedTime = parseFloat(sessionStorage.getItem('vt_bgm_time') || '0');
@@ -671,14 +673,20 @@
     }
 
     function playBgm() {
-      bgmAudio.play().then(() => {
-        updateBgmUI(true);
-      }).catch(err => {
-        console.log('BGM autoplay deferred by browser policy:', err);
-      });
+      if (!bgmAudio) return;
+      bgmAudio.volume = 0.65;
+      const promise = bgmAudio.play();
+      if (promise !== undefined) {
+        promise.then(() => {
+          updateBgmUI(true);
+        }).catch(err => {
+          console.log('BGM autoplay waiting for pointer move:', err);
+        });
+      }
     }
 
     function pauseBgm() {
+      if (!bgmAudio) return;
       bgmAudio.pause();
       updateBgmUI(false);
     }
@@ -688,38 +696,26 @@
       if (bgmAudio && !bgmAudio.paused) {
         sessionStorage.setItem('vt_bgm_time', bgmAudio.currentTime.toString());
       }
-    }, 2000);
+    }, 1500);
 
-    // Auto-start BGM on user's first interaction
-    const savedState = sessionStorage.getItem('vt_bgm_state');
-    if (savedState !== 'pause') {
-      const onFirstInteraction = () => {
+    // Auto-Play aggressively:
+    // 1. Try playing immediately on script execution
+    playBgm();
+
+    // 2. Also register fast pointer/move unlocker for browsers with strict policy
+    const unlockEvents = ['pointermove', 'mousemove', 'pointerdown', 'mousedown', 'touchstart', 'scroll', 'keydown', 'click'];
+    const fastUnlocker = () => {
+      if (bgmAudio && bgmAudio.paused) {
         playBgm();
-        window.removeEventListener('click', onFirstInteraction);
-        window.removeEventListener('pointerdown', onFirstInteraction);
-        window.removeEventListener('scroll', onFirstInteraction);
-        window.removeEventListener('touchstart', onFirstInteraction);
-        window.removeEventListener('keydown', onFirstInteraction);
-      };
-
-      // Try autoplay immediately
-      bgmAudio.play().then(() => {
-        updateBgmUI(true);
-      }).catch(() => {
-        // Fallback to first user gesture
-        window.addEventListener('click', onFirstInteraction, { once: true });
-        window.addEventListener('pointerdown', onFirstInteraction, { once: true });
-        window.addEventListener('scroll', onFirstInteraction, { once: true });
-        window.addEventListener('touchstart', onFirstInteraction, { once: true });
-        window.addEventListener('keydown', onFirstInteraction, { once: true });
-      });
-    } else {
-      updateBgmUI(false);
-    }
+      }
+      unlockEvents.forEach(evt => window.removeEventListener(evt, fastUnlocker, true));
+    };
+    unlockEvents.forEach(evt => window.addEventListener(evt, fastUnlocker, { once: true, capture: true }));
 
     // Music Toggle Button Listener
     if (musicBtn) {
-      musicBtn.addEventListener('click', () => {
+      musicBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         playCyberTone('bloop');
         if (bgmAudio.paused) {
           playBgm();
@@ -743,19 +739,19 @@
     // If user un-mutes video, duck BGM
     video.addEventListener('play', () => {
       if (!video.muted && bgmAudio && !bgmAudio.paused) {
-        bgmAudio.volume = 0.08;
+        bgmAudio.volume = 0.15;
       }
     });
 
     video.addEventListener('pause', () => {
-      if (bgmAudio) bgmAudio.volume = 0.35;
+      if (bgmAudio) bgmAudio.volume = 0.65;
     });
 
     video.addEventListener('volumechange', () => {
       if (!video.muted && !video.paused && bgmAudio && !bgmAudio.paused) {
-        bgmAudio.volume = 0.08;
+        bgmAudio.volume = 0.15;
       } else if (bgmAudio) {
-        bgmAudio.volume = 0.35;
+        bgmAudio.volume = 0.65;
       }
     });
 
